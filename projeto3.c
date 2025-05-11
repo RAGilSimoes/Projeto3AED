@@ -201,12 +201,12 @@ int partition(int arr[], int low, int high) {
     }
 
     int pivot_value = arr[meio];
-    //colocar o pivot para o final faz a execução um pouco mais lenta
-    swap(&arr[meio], &arr[high]); // Move o pivô para o final
+    //colocar o pivot para o penúltimo faz a execução um pouco mais lenta
+    swap(&arr[meio], &arr[high-1]); // Move o pivô para o final
     int i = low; 
     
     // não inclui o pivot
-    for (int j = low; j < high; j++){
+    for (int j = low; j < high-2; j++){
         // coloca à frente do pivot se o valor de j for menor ou igual ao pivot
         if (arr[j] <= pivot_value){
             swap(&arr[i], &arr[j]);
@@ -215,7 +215,7 @@ int partition(int arr[], int low, int high) {
     }
     
     // mete o pivot no lugar certo 
-    swap(&arr[i], &arr[high]);
+    swap(&arr[i], &arr[high-1]);
     
     // valor do pivot
     return i;
